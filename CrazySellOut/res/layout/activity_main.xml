@@ -26,6 +26,7 @@
         android:layout_alignBottom="@+id/button2"
         android:layout_marginLeft="16dp"
         android:layout_toRightOf="@+id/button2"
-        android:text="Submit Offers" />
+        android:text="Submit Offers" 
+        android:onClick="submitOffersOnclick"/>
 
 </RelativeLayout>
