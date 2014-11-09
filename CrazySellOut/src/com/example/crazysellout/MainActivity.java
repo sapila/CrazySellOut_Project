@@ -1,6 +1,7 @@
 package com.example.crazysellout;
 
 import com.example.crazysellout.UserSide.UserSideActivity;
+import com.example.crazysellout.storeside.StoreSideActivity;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -32,6 +33,14 @@ public class MainActivity extends Activity {
 		//starts the new UserSideActivity
 		startActivity(intent);
 		
+	}
+	
+	//Starts StoreSideActivity on SubmitOffer button press
+	public void submitOffersOnclick (View view)
+	{
+		Intent intent = new Intent(this, StoreSideActivity.class);
+		startActivity(intent);
+			
 	}
 
 }

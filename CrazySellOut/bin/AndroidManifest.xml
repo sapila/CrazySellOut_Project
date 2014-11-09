@@ -23,8 +23,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.crazysellout.UserSide.UserSideActivity"
+            android:name=".UserSide.UserSideActivity"
             android:label="@string/title_activity_user_side" >
+        </activity>
+        <activity
+            android:name="com.example.crazysellout.storeside.StoreSideActivity"
+            android:label="@string/title_activity_store_side" >
         </activity>
     </application>
 
