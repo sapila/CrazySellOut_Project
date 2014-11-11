@@ -55,16 +55,13 @@ public class MainActivity extends Activity {
 		AccountTXTReader atr = new AccountTXTReader();
 		InputStream iStream = this.getResources().openRawResource(R.drawable.store_accounts);
 		
-		String textIndex="";
-		
 		try {
-			textIndex = atr.readDataFile(iStream);
+			atr.readDataFile(iStream);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		Toast.makeText(getBaseContext(), 
-				textIndex, Toast.LENGTH_LONG).show();
 	}
 	
 

@@ -1,5 +1,5 @@
 package com.example.crazysellout;
 
-public class SavedAccount extends Account {
+public class SavedAccount extends AccountData {
 	String accountType;
 }

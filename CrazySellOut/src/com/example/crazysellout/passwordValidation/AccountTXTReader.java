@@ -4,22 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import com.example.crazysellout.AccountData;
 
 import android.accounts.Account;
+import android.util.Log;
+import android.widget.Toast;
 
 
 public class AccountTXTReader{
-	String logInDBFilePath;
-	
-	public boolean dbFileExists(){
-		
-		return false;
-	}
+	String[] fileOnTable;
 	
 	public boolean accountExistsInDAO(AccountData account){
-		
+		for(int i=0; i<fileOnTable.length; i++){
+			if((fileOnTable[i].contains(account.username)) && ((fileOnTable[i].contains(account.password))))
+				return true;	
+		}
 		
 		return false;
 	}
@@ -29,7 +30,7 @@ public class AccountTXTReader{
 		return "";	
 	}
 	
-	public String readDataFile(InputStream iStream) throws IOException {
+	public void readDataFile(InputStream iStream) throws IOException {
 		//String that gets each line of the text file in a while loop 
 		String stringContainer = null;
 		
@@ -44,8 +45,13 @@ public class AccountTXTReader{
 		}
 		iStream.close();
 
-		return strBuffer.toString();
+		
+		textIndexOnTable(strBuffer.toString());
+
 	}
 	
+	public void textIndexOnTable(String indexOnString){
+		fileOnTable = indexOnString.split("\n");
+	}
 	
 }
