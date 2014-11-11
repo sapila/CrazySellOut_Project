@@ -15,7 +15,7 @@ public class InputFormatValidator {
 	public boolean containtOnlyChars(String stringForTest)
 	{
 		
-		return false;//ebala false apla gia na min girnaei error sto demo run
+		return stringForTest.matches("[a-zA-Z]+");//elegxei ean to string periexei mono xarakthres kai epistrefei true h false
 	}
 	
 	public boolean containsOnlyNymbersAndDot(String stringForTest)
