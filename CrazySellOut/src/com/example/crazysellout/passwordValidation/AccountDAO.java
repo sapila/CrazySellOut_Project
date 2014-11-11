@@ -5,7 +5,6 @@ import android.accounts.Account;
 public class AccountDAO {
 	
 	public boolean isDAOActive(){
-		
 		return false;
 	}
 	
