@@ -54,13 +54,25 @@ public class MainActivity extends Activity {
 	public void submitPassword(View view){
 		AccountTXTReader atr = new AccountTXTReader();
 		InputStream iStream = this.getResources().openRawResource(R.drawable.store_accounts);
-		
+
+		//You must always call the method that reads the file before you
+		//do any of the checks in AccountTXTReader.
 		try {
 			atr.readDataFile(iStream);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//check if the account exists and print it to log cat
+		AccountData acd = new AccountData();
+		acd.username = "gkaleri12";
+		acd.password = "123456akfb";
+		boolean check = atr.accountExistsInDAO(acd);
+		System.out.println("Check Result : "+check);
+	    
+		String acType = atr.getAccountType(acd);
+		System.out.println("Account Type : "+acType);
 		
 	}
 	

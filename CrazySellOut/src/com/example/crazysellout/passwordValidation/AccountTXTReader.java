@@ -16,7 +16,9 @@ import android.widget.Toast;
 public class AccountTXTReader{
 	String[] fileOnTable;
 	
+	//Method that checks if the account exists on the file.
 	public boolean accountExistsInDAO(AccountData account){
+		
 		for(int i=0; i<fileOnTable.length; i++){
 			if((fileOnTable[i].contains(account.username)) && ((fileOnTable[i].contains(account.password))))
 				return true;	
@@ -25,11 +27,21 @@ public class AccountTXTReader{
 		return false;
 	}
 	
+	//Method that finds the row which contains the same account name 
+	//an password and return the account type. If the check doesnt find
+	//anything it return empty "".
 	public String getAccountType(AccountData account){
+		String accountType="";
 		
-		return "";	
+		for(int i=0; i<fileOnTable.length; i++){
+			if((fileOnTable[i].contains(account.username)) && ((fileOnTable[i].contains(account.password))))
+				accountType = splitAccountType(fileOnTable[i]);
+		}
+		
+		return accountType;	
 	}
 	
+	//Method that reads the text file from resources and 
 	public void readDataFile(InputStream iStream) throws IOException {
 		//String that gets each line of the text file in a while loop 
 		String stringContainer = null;
@@ -45,13 +57,21 @@ public class AccountTXTReader{
 		}
 		iStream.close();
 
-		
 		textIndexOnTable(strBuffer.toString());
-
 	}
 	
+	//Method that separates the string buffer to lines, and saves
+	//on a table so that they can be identified as an account.
 	public void textIndexOnTable(String indexOnString){
-		fileOnTable = indexOnString.split("\n");
+		fileOnTable = indexOnString.split("\r\n|\r|\n");
+	}
+	
+	//Method that splits a certain account to 3 pieces and 
+	//return the first part (account type).
+	public String splitAccountType(String accountRow){
+		String[] rowSeparated = accountRow.split(" ");
+		String firstPart = rowSeparated[0];
+		return firstPart;
 	}
 	
 }
