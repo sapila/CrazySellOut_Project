@@ -16,6 +16,15 @@ import android.widget.Toast;
 public class AccountTXTReader{
 	String[] fileOnTable;
 	
+	//initialize txt reader with the input stream to set fileOnTable
+	public AccountTXTReader(InputStream iStream) throws IOException {
+		
+		super();
+		
+		this.readDataFile(iStream);
+
+	}
+
 	//Method that checks if the account exists on the file.
 	public boolean accountExistsInDAO(AccountData account){
 		
@@ -38,7 +47,7 @@ public class AccountTXTReader{
 				accountType = splitAccountType(fileOnTable[i]);
 		}
 		
-		return accountType;	
+		return accountType;
 	}
 	
 	//Method that reads the text file from resources and 

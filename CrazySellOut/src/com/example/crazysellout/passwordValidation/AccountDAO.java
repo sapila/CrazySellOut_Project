@@ -1,21 +1,40 @@
 package com.example.crazysellout.passwordValidation;
 
-import android.accounts.Account;
+import java.io.IOException;
+
+import com.example.crazysellout.AccountData;
+import com.example.crazysellout.LogInActivity;
 
 public class AccountDAO {
 	
 	public boolean isDAOActive(){
-		return false;
+		
+		//an to LogInActivity.accountsDbFile exei orisei tote i basi iparxei
+		if(LogInActivity.accountsDbFile != null)
+		{
+			return true;
+			
+		}else{
+			
+			return false;
+		}
 	}
 	
-	public boolean accountExistsInDAO(Account account){
+	public boolean accountExistsInDAO(AccountData account) throws IOException{
 		
-		return false;
+		AccountTXTReader txtDbReader = new AccountTXTReader(LogInActivity.accountsDbFile);
+		if(txtDbReader.accountExistsInDAO(account))
+		{
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
-	public String getAccountType(Account account){
+	public String getAccountType(AccountData account) throws IOException{
 		
-		return "";
+		AccountTXTReader txtDbReader = new AccountTXTReader(LogInActivity.accountsDbFile);
+		return txtDbReader.getAccountType(account);
 	}
 	
 	
