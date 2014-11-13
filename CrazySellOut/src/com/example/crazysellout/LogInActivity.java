@@ -36,25 +36,6 @@ public class LogInActivity extends Activity {
 		return true;
 	}
 	
-	//On button click event (Show Offers Button) starts the userSide activity.
-	public void showOffersOnClick(View view){
-		
-		//Intent, function that initializes to intent variable the opening of the 
-		//user side activity.
-		Intent intent = new Intent(this, UserSideActivity.class);
-		//starts the new UserSideActivity
-		startActivity(intent);
-		
-	}
-	
-	//Starts StoreSideActivity on SubmitOffer button press
-	public void submitOffersOnclick (View view)
-	{
-		Intent intent = new Intent(this, StoreSideActivity.class);
-		startActivity(intent);
-			
-	}
-	
 	public void submitPassword(View view) throws IOException{
 		
 		//set the inputStream datamember gia na einai prosbasimo kai apo alles klaseis xwris na to pernaw san orisma
@@ -73,6 +54,8 @@ public class LogInActivity extends Activity {
 		LogInViewController viewController = new LogInViewController();
 		String logInType = viewController.logIn(inputAccount,this);  //epistrefei an egine kanonika log in i ipirxe kapoio problima
 		
+		System.out.println(logInType);
+		
 		if(logInType == "error") //throws error message //if log is not successful
 		{
 			
@@ -80,13 +63,10 @@ public class LogInActivity extends Activity {
 
 			Toast toast = Toast.makeText(this, viewController.logInErrorMessage, duration);
 			toast.show();
-			
-			
-			
-			
+
 		}else{ 
 			
-			if(logInType == "user")
+			if(logInType.equals("user"))
 			{
 				Intent intent = new Intent(this, UserSideActivity.class);
 				//starts the new UserSideActivity
@@ -100,30 +80,7 @@ public class LogInActivity extends Activity {
 			}
 			
 		}
-		
-		/*AccountTXTReader atr = new AccountTXTReader();
-		InputStream iStream = this.getResources().openRawResource(R.drawable.store_accounts);
 
-		//You must always call the method that reads the file before you
-		//do any of the checks in AccountTXTReader.
-		try {
-			atr.readDataFile(iStream);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		//check if the account exists and print it to log cat
-		AccountData acd = new AccountData();
-		acd.username = "gkaleri12";
-		acd.password = "123456akfb";
-		boolean check = atr.accountExistsInDAO(acd);
-		System.out.println("Check Result : "+check);
-	    
-		String acType = atr.getAccountType(acd);
-		System.out.println("Account Type : "+acType);*/
-		
 	}
-	
 
 }
