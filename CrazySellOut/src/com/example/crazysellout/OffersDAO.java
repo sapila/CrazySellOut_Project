@@ -19,18 +19,7 @@ public class OffersDAO implements IOffersDAO {
 	@Override
 	public List<Offer> getOffersList() {
 		List<Offer> offerList = new ArrayList<Offer>();
-		OfferDataReader odr = new OfferDataReader();
-		Offer offerData = new Offer();
-		
-		//The method that is called will be made later
-		odr.getNumberOfRows();
-		
-		int rowNumber = odr.DataRowNumbers;
-		
-		for(int i=0; i<rowNumber; i++){
-			offerData = odr.ReadOffer();
-			offerList.add(offerData);
-		}
+	//	OfferDataReader odr = new OfferDataReader(LogInActivity.accountsDbFile);
 		
 		return offerList;
 	}
