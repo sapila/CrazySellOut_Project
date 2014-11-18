@@ -2,9 +2,9 @@ package com.example.crazysellout;
 
 public class Offer {
 	//This is a struct of data that represents an offer.
-	String StoreName;
-	String ProductCategory;
-	String ProductName;
-	String ProductPrice;
-	String ProductDescription;
+	public String StoreName;
+	public String ProductCategory;
+	public String ProductName;
+	public String ProductPrice;
+	public String ProductDescription;
 }
