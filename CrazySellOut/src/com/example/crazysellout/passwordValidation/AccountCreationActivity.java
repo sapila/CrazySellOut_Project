@@ -2,6 +2,7 @@ package com.example.crazysellout.passwordValidation;
 
 import java.io.InputStream;
 
+import com.example.crazysellout.AccountData;
 import com.example.crazysellout.R;
 import com.example.crazysellout.R.layout;
 import com.example.crazysellout.R.menu;
@@ -57,6 +58,47 @@ public class AccountCreationActivity extends Activity {
 		String paswd = password.getText().toString();
 		String rpaswd = reTypedPassword.getText().toString();
 		
+		LogInInputValidator liv = new LogInInputValidator();
+		boolean typedPasswdValidation = liv.passwordReTypeValidation(paswd, rpaswd);
 		
+		//If the given password and the re typed password are the same
+		//the call all the other validations
+		if(typedPasswdValidation == true){
+			AccountData ad = new AccountData();
+			ad = setObjectDataMembers(acNameString, paswd, radioBtnText);
+			boolean validationCheck = liv.isLogInValid(ad);
+			
+			System.out.println(validationCheck+" ");
+			if(validationCheck == true){
+				//Here will be called a class that will insert the new account.
+			}else{
+				String errorMessage = liv.errorMessage;
+				
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(this, errorMessage, duration);
+				toast.show();
+			}
+			
+			
+		}else{
+			int duration = Toast.LENGTH_SHORT;
+
+			Toast toast = Toast.makeText(this, "Data given mismatch!\nThe password given" +
+					"and the re-typed password are not the same.", duration);
+			toast.show();
+		}
 	}
+	
+	//Method that sets the data on a AccountData Object
+	public AccountData setObjectDataMembers(String username, String password, String acType){
+		AccountData ad = new AccountData();
+		
+		ad.accountType = acType;
+		ad.password = password;
+		ad.username = username;
+		
+		return ad;
+	}
+	
+	
 }
