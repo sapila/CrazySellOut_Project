@@ -27,8 +27,12 @@
             android:label="@string/title_activity_user_side" >
         </activity>
         <activity
-            android:name="com.example.crazysellout.storeside.StoreSideActivity"
+            android:name=".storeside.StoreSideActivity"
             android:label="@string/title_activity_store_side" >
+        </activity>
+        <activity
+            android:name="com.example.crazysellout.passwordValidation.AccountCreationActivity"
+            android:label="@string/title_activity_account_creation" >
         </activity>
     </application>
 

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import com.example.crazysellout.UserSide.UserSideActivity;
+import com.example.crazysellout.passwordValidation.AccountCreationActivity;
 import com.example.crazysellout.passwordValidation.AccountTXTReader;
 import com.example.crazysellout.storeside.StoreSideActivity;
 
@@ -77,10 +78,14 @@ public class LogInActivity extends Activity {
 				//Starts StoreSideActivity
 				Intent intent = new Intent(this, StoreSideActivity.class);
 				startActivity(intent);
-			}
-			
+			}	
 		}
-
+	}
+	
+	//Method that opens a new activity for password creation.
+	public void newPasswordEventClick(View view){
+		Intent intent = new Intent(this, AccountCreationActivity.class);
+		startActivity(intent);
 	}
 
 }

@@ -18,11 +18,8 @@ public class AccountTXTReader{
 	
 	//initialize txt reader with the input stream to set fileOnTable
 	public AccountTXTReader(InputStream iStream) throws IOException {
-		
 		super();
-		
 		this.readDataFile(iStream);
-
 	}
 
 	//Method that checks if the account exists on the file.
