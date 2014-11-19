@@ -84,6 +84,7 @@ public class LogInActivity extends Activity {
 	
 	//Method that opens a new activity for password creation.
 	public void newPasswordEventClick(View view){
+		this.accountsDbFile = this.getResources().openRawResource(R.drawable.store_accounts);
 		Intent intent = new Intent(this, AccountCreationActivity.class);
 		startActivity(intent);
 	}

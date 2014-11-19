@@ -1,8 +1,10 @@
 package com.example.crazysellout.passwordValidation;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import com.example.crazysellout.AccountData;
+import com.example.crazysellout.LogInActivity;
 import com.example.crazysellout.R;
 import com.example.crazysellout.R.layout;
 import com.example.crazysellout.R.menu;
@@ -67,10 +69,18 @@ public class AccountCreationActivity extends Activity {
 			AccountData ad = new AccountData();
 			ad = setObjectDataMembers(acNameString, paswd, radioBtnText);
 			boolean validationCheck = liv.isLogInValid(ad);
-			
-			System.out.println(validationCheck+" ");
+
 			if(validationCheck == true){
-				//Here will be called a class that will insert the new account.
+				String message = "";
+				
+				try {
+					AccountDBFileUpdate abdfu = new AccountDBFileUpdate(LogInActivity.accountsDbFile);
+					message = abdfu.accountFileUpdate(ad);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}else{
 				String errorMessage = liv.errorMessage;
 				
