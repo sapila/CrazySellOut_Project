@@ -11,7 +11,7 @@ public class OfferDataWriter {
 	{
 		try{
 			
-			FileOutputStream fout = new FileOutputStream("res/drawable/offers");
+			FileOutputStream fout = new FileOutputStream("res/drawable/offers", true);
 			ObjectOutputStream oos = new ObjectOutputStream(fout);
 			oos.writeObject(newOffer);
 			
