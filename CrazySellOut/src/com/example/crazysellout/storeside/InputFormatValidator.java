@@ -8,8 +8,11 @@ public class InputFormatValidator {
 	//elenxos ama to inputOffer exei to sostoFormat
 	public boolean isOfferValid(Offer inputOffer)
 	{
-		
-		return false;//ebala false apla gia na min girnaei error sto demo run
+		if(containsOnlyNymbersAndDot(inputOffer.productPrice) && containtOnlyChars(inputOffer.productCategory)){
+			return true;
+		}else{
+			return false;
+		 }
 	}
 	
 	public boolean containtOnlyChars(String stringForTest)
