@@ -21,7 +21,13 @@ public class InputFormatValidator {
 	public boolean containsOnlyNymbersAndDot(String stringForTest)
 	{
 		
-		return false;//ebala false apla gia na min girnaei error sto demo run
+		try{  
+			// Ελέγχω αν το όρισμα της συνάρτησης είναι double αριθμός.  
+			double d = Double.parseDouble(stringForTest);  
+		  }catch(NumberFormatException nfe){  
+		   	return false;  
+		  }  
+		  return true;  
 	}
 	
 }
