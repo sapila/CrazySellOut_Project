@@ -13,18 +13,12 @@ public class OfferDataReader {
 	
 	Offer ReadOffer(int indexLine){
 		Offer offers = new Offer();
-
-		String storeName=null;
-		String productCategory=null;
-		String productName=null;
-		String productPrice=null;
-		String productDescription=null;
 		
-		offers.StoreName = storeName;		
-		offers.ProductCategory = productCategory;
-		offers.ProductName = productName;
-		offers.ProductPrice = productPrice;
-		offers.ProductDescription = productDescription;
+		offers.StoreName = fileOnTable[0];
+		offers.ProductCategory = fileOnTable[2];
+		offers.ProductName = fileOnTable[3];
+		offers.ProductPrice = fileOnTable[4];
+		offers.ProductDescription = fileOnTable[5];
 		
 		return offers;
 	}
@@ -39,6 +33,7 @@ public class OfferDataReader {
 	public void readDataFile(InputStream iStream) throws IOException {
 		//String that gets each line of the text file in a while loop
 		String stringContainer = null;
+		String strW= null;
 			
 		//Variable in which the contex of the file will be stored
 		StringBuffer strBuffer = new StringBuffer();
@@ -47,10 +42,12 @@ public class OfferDataReader {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(iStream));
 		
 		while ((stringContainer = reader.readLine()) != null) {
-			strBuffer.append(stringContainer + "\n" );
+			strBuffer.append(stringContainer + "\n");
 		}
-		iStream.close();
-		textIndexOnTable(strBuffer.toString());
+			
+		while ((strW = reader.readLine()) != null) {
+				strBuffer.append(strW + " ");
+		}	
 	}
 	
 	//Method that separates the string buffer to lines, and saves
@@ -59,8 +56,7 @@ public class OfferDataReader {
 		fileOnTable = indexOnString.split("\r\n|\r|\n");
 	}
 	
-	//Method that breaks each line of the table in offers
-	public void SplitLines (String splitLinesOnTable){
-		fileOnTable = splitLinesOnTable.split(" ");
+	public void lineInWords(String indexOnString){
+		fileOnTable = indexOnString.split(" ");
 	}
 }
