@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_user_side">UserSideActivity</string>
     <string name="title_activity_store_side">StoreSideActivity</string>
+    <string name="title_activity_account_creation">AccountCreationActivity</string>
 
 </resources>
