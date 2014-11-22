@@ -7,7 +7,7 @@ public class OfferDataReader {
 	
 	//Returns a single offer (a single line from the data file) with the help 
 	//of the indexLine variable.
-	Offer ReadOffer(int indexLine){
+	Offer ReadOffer(){
 
 		return null;
 	}
