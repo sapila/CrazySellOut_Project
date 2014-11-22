@@ -7,4 +7,5 @@ public class Offer {
 	String ProductName;
 	String ProductPrice;
 	String ProductDescription;
+    
 }
